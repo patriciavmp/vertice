@@ -192,7 +192,7 @@ body {
     body {
         background: white !important;
     }
-    nav, footer, #dev-nav-container, .no-print {
+    nav, footer, .no-print {
         display: none !important;
     }
     #pdf-area {

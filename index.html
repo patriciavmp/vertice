@@ -77,8 +77,8 @@
                 <button onclick="navigate('view-catalog')" class="hover:text-emerald-700 transition cursor-pointer">Servicios</button>
                 <button onclick="navigate('view-landing'); document.getElementById('seccion-funcionamiento')?.scrollIntoView({behavior: 'smooth'})" class="hover:text-emerald-700 transition cursor-pointer">Cómo funciona</button>
                 <button onclick="navigate('view-catalog')" class="hover:text-emerald-700 transition cursor-pointer">Especialistas</button>
-                <button onclick="navigate('view-admin')" class="hover:text-emerald-700 text-gray-400 text-xs font-semibold uppercase tracking-wider transition cursor-pointer flex items-center gap-1">
-                    <i class="fa-solid fa-lock text-[10px]"></i> Conserje
+                <button id="nav-admin-link" onclick="navigate('view-admin')" class="hidden hover:text-emerald-700 text-emerald-800 bg-emerald-100/70 border border-emerald-200 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition cursor-pointer items-center gap-1.5 shadow-xs">
+                    <i class="fa-solid fa-user-shield text-[11px]"></i> Conserje
                 </button>
             </div>
 
@@ -88,8 +88,8 @@
                     Ingresar UPC
                 </button>
 
-                <div id="nav-user-badge" class="hidden flex items-center gap-2 bg-emerald-50 text-emerald-800 px-4 py-2 rounded-xl border border-emerald-100 text-sm font-bold shadow-sm">
-                    <i class="fa-solid fa-shield-check text-emerald-600"></i>
+                <div id="nav-user-badge" class="hidden items-center gap-2 bg-emerald-50 text-emerald-800 px-4 py-2 rounded-xl border border-emerald-100 text-sm font-bold shadow-sm">
+                    <i id="nav-user-icon" class="fa-solid fa-shield-check text-emerald-600"></i>
                     <span id="nav-user-code"></span>
                     <button onclick="handleLogout()" title="Cerrar Sesión" class="ml-1 text-gray-400 hover:text-red-500 transition">
                         <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
@@ -108,7 +108,9 @@
             <button onclick="navigate('view-landing')" class="block w-full text-left py-2 text-sm font-semibold text-gray-700 hover:text-emerald-700">Inicio</button>
             <button onclick="navigate('view-catalog')" class="block w-full text-left py-2 text-sm font-semibold text-gray-700 hover:text-emerald-700">Servicios</button>
             <button onclick="navigate('view-catalog')" class="block w-full text-left py-2 text-sm font-semibold text-gray-700 hover:text-emerald-700">Especialistas</button>
-            <button onclick="navigate('view-admin')" class="block w-full text-left py-2 text-sm font-semibold text-gray-500 hover:text-emerald-700">Panel Conserje</button>
+            <button id="mobile-admin-link" onclick="navigate('view-admin')" class="hidden w-full text-left py-2 text-sm font-bold text-emerald-700 bg-emerald-50 px-3 rounded-lg items-center gap-2">
+                <i class="fa-solid fa-user-shield text-xs"></i> Panel Conserje
+            </button>
         </div>
     </nav>
 
@@ -204,27 +206,67 @@
             </div>
         </section>
 
-        <!-- PANTALLA 2: ACCESO INSTITUCIONAL UPC -->
+        <!-- PANTALLA 2: ACCESO INSTITUCIONAL UPC Y CONSERJE -->
         <section id="view-login" class="view-section hidden flex-grow items-center justify-center py-12 px-4" data-layout="flex">
-            <div class="bg-white p-10 md:p-12 rounded-[2rem] shadow-soft max-w-md w-full border border-gray-100 fade-in">
-                <div class="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-3xl flex items-center justify-center text-3xl mb-8 mx-auto shadow-sm">
-                    <i class="fa-solid fa-lock"></i>
+            <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-soft max-w-md w-full border border-gray-100 fade-in">
+                <!-- Icono de Seguridad Dinámico -->
+                <div class="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-3xl flex items-center justify-center text-3xl mb-6 mx-auto shadow-sm transition-all duration-300">
+                    <i id="login-icon" class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-3 tracking-tight">Acceso UPC</h2>
-                <p class="text-center text-gray-500 text-sm mb-10 leading-relaxed">Valida tu código de alumno o docente para explorar el catálogo de especialistas protegidos.</p>
+
+                <!-- Pestañas de Selección de Rol -->
+                <div class="flex p-1 bg-gray-100 rounded-2xl mb-8">
+                    <button type="button" id="tab-student" onclick="setLoginTab('student')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all shadow-sm bg-white text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-graduation-cap"></i> Alumno / Docente
+                    </button>
+                    <button type="button" id="tab-admin" onclick="setLoginTab('admin')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-gray-500 hover:text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-user-shield"></i> Conserje
+                    </button>
+                </div>
+
+                <!-- Encabezados Dinámicos -->
+                <div id="login-student-header">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-2 tracking-tight">Acceso UPC</h2>
+                    <p class="text-center text-gray-500 text-sm mb-8 leading-relaxed">Valida tu código de alumno o docente para explorar el catálogo de especialistas protegidos.</p>
+                </div>
+                <div id="login-admin-header" class="hidden">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-2 tracking-tight">Panel Conserje</h2>
+                    <p class="text-center text-gray-500 text-sm mb-8 leading-relaxed">Acceso reservado para el equipo de conserjería y supervisión en tiempo real.</p>
+                </div>
                 
                 <form id="login-form" onsubmit="handleLogin(event)" class="space-y-6">
-                    <div>
-                        <label for="upc-input" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Código Institucional</label>
+                    <!-- Campo Alumno UPC -->
+                    <div id="input-group-student">
+                        <label for="upc-input" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Código Institucional UPC</label>
                         <input type="text" id="upc-input" placeholder="u20XXXXXX" 
-                            class="w-full bg-gray-50 border border-gray-200 text-gray-900 px-6 py-4 rounded-2xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all uppercase font-mono tracking-widest text-lg" required>
+                            class="w-full bg-gray-50 border border-gray-200 text-gray-900 px-6 py-4 rounded-2xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all uppercase font-mono tracking-widest text-lg">
                         <p id="login-error" class="hidden text-red-500 text-xs mt-3 font-semibold flex items-center gap-1.5">
                             <i class="fa-solid fa-circle-exclamation"></i> Debe empezar con 'u' seguido de 8 a 9 números o letras.
                         </p>
                         <p class="text-[11px] text-gray-400 mt-2 font-medium">Ejemplos válidos: u20261029, u202523271, u201912345</p>
                     </div>
-                    <button type="submit" class="w-full bg-gray-900 hover:bg-emerald-700 text-white font-semibold py-4 rounded-2xl transition-all shadow-md transform hover:-translate-y-0.5">
-                        Validar Identidad <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+
+                    <!-- Campo Conserje / Admin -->
+                    <div id="input-group-admin" class="hidden">
+                        <label for="admin-input" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Credencial de Conserjería</label>
+                        <div class="relative">
+                            <input type="password" id="admin-input" placeholder="Ingresa credencial" 
+                                class="w-full bg-gray-50 border border-gray-200 text-gray-900 px-6 py-4 rounded-2xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all font-mono tracking-widest text-lg pr-12">
+                            <button type="button" onclick="togglePasswordVisibility('admin-input')" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 cursor-pointer">
+                                <i id="eye-icon-admin" class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                        <p id="admin-error" class="hidden text-red-500 text-xs mt-3 font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-exclamation"></i> Credencial de Conserje no autorizada.
+                        </p>
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-800 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-key text-emerald-600"></i>
+                            <span>Credencial de acceso: <strong class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200">ADMIN2026</strong></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="login-submit-btn" class="w-full bg-gray-900 hover:bg-emerald-700 text-white font-semibold py-4 rounded-2xl transition-all shadow-md transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Validar Identidad UPC</span> <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </form>
             </div>
@@ -705,28 +747,6 @@
         </div>
     </footer>
 
-    <!-- ==========================================================================
-         DEV MENU FLOTANTE (Navegación Rápida para Evaluación)
-         ========================================================================== -->
-    <div id="dev-nav-container" class="fixed bottom-6 right-6 bg-gray-900/95 backdrop-blur shadow-2xl text-white p-3 rounded-2xl flex items-center gap-3 z-50 text-xs font-mono border border-gray-700">
-        <div class="bg-emerald-500/20 text-emerald-400 p-2 rounded-xl">
-            <i class="fa-solid fa-code"></i>
-        </div>
-        <div class="flex flex-col">
-            <label for="dev-nav" class="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1">Navegador Prototipo</label>
-            <select id="dev-nav" onchange="navigate(this.value)" class="bg-transparent text-white font-bold outline-none border-none cursor-pointer appearance-none">
-                <option value="view-landing" class="text-black">1. Inicio (Landing)</option>
-                <option value="view-login" class="text-black">2. Acceso Institucional</option>
-                <option value="view-catalog" class="text-black">3. Catálogo y Filtros</option>
-                <option value="view-request" class="text-black">4. Solicitud al Conserje</option>
-                <option value="view-specialist" class="text-black">5. Ficha del Especialista</option>
-                <option value="view-chat" class="text-black">6. Chat WhatsApp</option>
-                <option value="view-payment" class="text-black">7. Pago de Seña</option>
-                <option value="view-constancia" class="text-black">8. Constancia PDF</option>
-                <option value="view-admin" class="text-black">9. Panel Admin</option>
-            </select>
-        </div>
-    </div>
 
     <!-- Scripts de la Aplicación -->
     <script src="js/data.js"></script>

@@ -41,12 +41,15 @@ Plataforma web de confianza y vinculación de servicios especializados (segurida
    - Desbloqueo de datos reales de contacto y fotografía del especialista.
    - Generación y descarga directa en PDF de alta fidelidad vía `html2pdf.js`.
 
-8. **Panel Interno del Conserje (Admin):**
+8. **Panel Interno del Conserje (Admin con Credenciales):**
+   - Acceso restringido y protegido exclusivamente para personal autorizado mediante clave (`ADMIN2026`).
+   - El botón de conserje no se expone a visitantes públicos; solo se habilita al iniciar sesión con perfil de conserjería.
    - Métricas y KPIs operativos en tiempo real (Tiempo de respuesta, tasa de conversión, filtro UPC, CSAT).
    - Tabla interactiva de solicitudes con estados y acceso directo a chats.
 
-9. **Navegador Rápido de Prototipo (Dev Menu):**
-   - Selector flotante para saltar directamente entre cualquiera de las 9 pantallas del flujo.
+9. **Seguridad y Control de Roles:**
+   - Detección automática y conmutación entre perfil Alumno UPC y Conserje Autorizado.
+   - Protección de rutas contra accesos no autorizados con redirección y notificaciones contextuales.
 
 ---
 

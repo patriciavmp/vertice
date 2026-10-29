@@ -8,6 +8,8 @@
 // 1. ESTADO GLOBAL DE LA APLICACIÓN
 const appState = {
     code: null,
+    role: null, // 'student' | 'admin'
+    currentLoginTab: 'student',
     service: {
         name: '',
         category: '',
@@ -52,6 +54,14 @@ function showToast(message, type = 'info', duration = 3500) {
 
 // 3. ENRUTADOR Y SISTEMA DE NAVEGACIÓN SPA
 function navigate(viewId) {
+    // Protección de seguridad para el Panel del Conserje
+    if (viewId === 'view-admin' && appState.role !== 'admin') {
+        showToast('Acceso restringido: Se requieren credenciales de Conserje', 'error');
+        navigate('view-login');
+        setLoginTab('admin');
+        return;
+    }
+
     const views = document.querySelectorAll('.view-section');
     views.forEach(el => {
         el.classList.add('hidden');
@@ -70,10 +80,6 @@ function navigate(viewId) {
 
     appState.currentView = viewId;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Sincronizar selector de navegación de desarrollo
-    const devNav = document.getElementById('dev-nav');
-    if (devNav) devNav.value = viewId;
 
     // Cerrar menú móvil si está abierto
     const mobileMenu = document.getElementById('mobile-menu');
@@ -97,14 +103,182 @@ function toggleMobileMenu() {
     }
 }
 
-// 4. AUTENTICACIÓN Y VALIDACIÓN UPC
+// 4. SISTEMA DE AUTENTICACIÓN Y ROLES (ALUMNO UPC & CONSERJE)
+function setLoginTab(tab) {
+    appState.currentLoginTab = tab;
+    const tabStudent = document.getElementById('tab-student');
+    const tabAdmin = document.getElementById('tab-admin');
+    const studentHeader = document.getElementById('login-student-header');
+    const adminHeader = document.getElementById('login-admin-header');
+    const groupStudent = document.getElementById('input-group-student');
+    const groupAdmin = document.getElementById('input-group-admin');
+    const submitBtnSpan = document.querySelector('#login-submit-btn span');
+    const loginIcon = document.getElementById('login-icon');
+
+    const studentError = document.getElementById('login-error');
+    const adminError = document.getElementById('admin-error');
+    if (studentError) studentError.classList.add('hidden');
+    if (adminError) adminError.classList.add('hidden');
+
+    const studentInput = document.getElementById('upc-input');
+    const adminInput = document.getElementById('admin-input');
+
+    if (tab === 'student') {
+        if (tabStudent) {
+            tabStudent.className = 'flex-1 py-2.5 text-xs font-bold rounded-xl transition-all shadow-sm bg-white text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        }
+        if (tabAdmin) {
+            tabAdmin.className = 'flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-gray-500 hover:text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        }
+        if (studentHeader) studentHeader.classList.remove('hidden');
+        if (adminHeader) adminHeader.classList.add('hidden');
+        if (groupStudent) groupStudent.classList.remove('hidden');
+        if (groupAdmin) groupAdmin.classList.add('hidden');
+        if (submitBtnSpan) submitBtnSpan.innerText = 'Validar Identidad UPC';
+        if (loginIcon) loginIcon.className = 'fa-solid fa-graduation-cap';
+        if (studentInput) {
+            studentInput.required = true;
+            setTimeout(() => studentInput.focus(), 60);
+        }
+        if (adminInput) adminInput.required = false;
+    } else {
+        if (tabStudent) {
+            tabStudent.className = 'flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-gray-500 hover:text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        }
+        if (tabAdmin) {
+            tabAdmin.className = 'flex-1 py-2.5 text-xs font-bold rounded-xl transition-all shadow-sm bg-white text-gray-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        }
+        if (studentHeader) studentHeader.classList.add('hidden');
+        if (adminHeader) adminHeader.classList.remove('hidden');
+        if (groupStudent) groupStudent.classList.add('hidden');
+        if (groupAdmin) groupAdmin.classList.remove('hidden');
+        if (submitBtnSpan) submitBtnSpan.innerText = 'Ingresar como Conserje';
+        if (loginIcon) loginIcon.className = 'fa-solid fa-user-shield';
+        if (adminInput) {
+            adminInput.required = true;
+            setTimeout(() => adminInput.focus(), 60);
+        }
+        if (studentInput) studentInput.required = false;
+    }
+}
+
+function togglePasswordVisibility(inputId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById('eye-icon-admin');
+    if (!input) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) {
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        }
+    } else {
+        input.type = 'password';
+        if (icon) {
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+}
+
+function updateAuthUI() {
+    const loginBtn = document.getElementById('nav-login-btn');
+    const userBadge = document.getElementById('nav-user-badge');
+    const userCode = document.getElementById('nav-user-code');
+    const userIcon = document.getElementById('nav-user-icon');
+    const navAdminLink = document.getElementById('nav-admin-link');
+    const mobileAdminLink = document.getElementById('mobile-admin-link');
+
+    if (appState.code) {
+        if (loginBtn) loginBtn.classList.add('hidden');
+        if (userBadge) {
+            userBadge.classList.remove('hidden');
+            userBadge.classList.add('flex');
+        }
+        if (userCode) userCode.innerText = appState.code;
+
+        if (appState.role === 'admin') {
+            if (userIcon) userIcon.className = 'fa-solid fa-user-shield text-emerald-600';
+            if (navAdminLink) {
+                navAdminLink.classList.remove('hidden');
+                navAdminLink.classList.add('flex');
+            }
+            if (mobileAdminLink) {
+                mobileAdminLink.classList.remove('hidden');
+                mobileAdminLink.classList.add('flex');
+            }
+        } else {
+            if (userIcon) userIcon.className = 'fa-solid fa-shield-check text-emerald-600';
+            if (navAdminLink) {
+                navAdminLink.classList.add('hidden');
+                navAdminLink.classList.remove('flex');
+            }
+            if (mobileAdminLink) {
+                mobileAdminLink.classList.add('hidden');
+                mobileAdminLink.classList.remove('flex');
+            }
+        }
+    } else {
+        if (loginBtn) loginBtn.classList.remove('hidden');
+        if (userBadge) {
+            userBadge.classList.add('hidden');
+            userBadge.classList.remove('flex');
+        }
+        if (navAdminLink) {
+            navAdminLink.classList.add('hidden');
+            navAdminLink.classList.remove('flex');
+        }
+        if (mobileAdminLink) {
+            mobileAdminLink.classList.add('hidden');
+            mobileAdminLink.classList.remove('flex');
+        }
+    }
+}
+
 function handleLogin(e) {
     e.preventDefault();
+
+    // Modo Conserje / Administrador
+    if (appState.currentLoginTab === 'admin') {
+        const adminInput = document.getElementById('admin-input');
+        const adminError = document.getElementById('admin-error');
+        const code = adminInput ? adminInput.value.trim() : '';
+
+        const validAdminCodes = ['ADMIN2026', 'CONSERJE', 'ADMIN', 'CONSERJE-UPC', 'UPC-ADMIN'];
+        if (validAdminCodes.includes(code.toUpperCase())) {
+            if (adminError) adminError.classList.add('hidden');
+            appState.code = 'CONSERJE';
+            appState.role = 'admin';
+
+            updateAuthUI();
+            showToast('Sesión de Conserje iniciada con éxito', 'success');
+            navigate('view-admin');
+            if (adminInput) adminInput.value = '';
+        } else {
+            if (adminError) adminError.classList.remove('hidden');
+            showToast('Credencial de Conserje no autorizada', 'error');
+        }
+        return;
+    }
+
+    // Modo Alumno UPC
     const inputEl = document.getElementById('upc-input');
     const errorEl = document.getElementById('login-error');
     if (!inputEl) return;
 
     const input = inputEl.value.trim().toLowerCase();
+
+    // Atajo inteligente si escribe código admin en la pestaña de alumno
+    if (['admin2026', 'conserje', 'admin'].includes(input)) {
+        if (errorEl) errorEl.classList.add('hidden');
+        appState.code = 'CONSERJE';
+        appState.role = 'admin';
+        updateAuthUI();
+        showToast('Credencial de Conserje detectada. Bienvenido.', 'success');
+        navigate('view-admin');
+        inputEl.value = '';
+        return;
+    }
     
     // Regla UPC: Comienza con u/U seguido de 8 a 9 caracteres alfanuméricos
     const regex = /^[uU][a-zA-Z0-9]{8,9}$/;
@@ -112,18 +286,12 @@ function handleLogin(e) {
     if (regex.test(input)) {
         if (errorEl) errorEl.classList.add('hidden');
         appState.code = input.toUpperCase();
+        appState.role = 'student';
 
-        // Actualizar barra de navegación
-        const loginBtn = document.getElementById('nav-login-btn');
-        const userBadge = document.getElementById('nav-user-badge');
-        const userCode = document.getElementById('nav-user-code');
-
-        if (loginBtn) loginBtn.classList.add('hidden');
-        if (userBadge) userBadge.classList.remove('hidden');
-        if (userCode) userCode.innerText = appState.code;
-
+        updateAuthUI();
         showToast(`Identidad UPC validada: ${appState.code}`, 'success');
         navigate('view-catalog');
+        inputEl.value = '';
     } else {
         if (errorEl) errorEl.classList.remove('hidden');
         showToast('Código inválido. Formato: u seguido de 8 a 9 caracteres', 'error');
@@ -132,10 +300,8 @@ function handleLogin(e) {
 
 function handleLogout() {
     appState.code = null;
-    const loginBtn = document.getElementById('nav-login-btn');
-    const userBadge = document.getElementById('nav-user-badge');
-    if (loginBtn) loginBtn.classList.remove('hidden');
-    if (userBadge) userBadge.classList.add('hidden');
+    appState.role = null;
+    updateAuthUI();
 
     showToast('Sesión cerrada correctamente', 'info');
     navigate('view-landing');
