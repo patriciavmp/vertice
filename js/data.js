@@ -15,7 +15,7 @@ const DB_SERVICES = [
         id: 1, 
         title: 'Chofer de Seguridad', 
         category: 'Seguridad', 
-        districts: ['San Isidro', 'Miraflores'], 
+        districts: ['San Isidro', 'Surco'], 
         price: 45, 
         rating: 4.9, 
         reviews: 31, 
@@ -35,7 +35,7 @@ const DB_SERVICES = [
         id: 3, 
         title: 'Custodia Temporal', 
         category: 'Seguridad', 
-        districts: ['San Borja', 'Surco'], 
+        districts: ['San Miguel', 'Surco'], 
         price: 40, 
         rating: 4.9, 
         reviews: 23, 
@@ -45,7 +45,7 @@ const DB_SERVICES = [
         id: 4, 
         title: 'Facilitador de Eventos', 
         category: 'Social/Asistencia', 
-        districts: ['Miraflores', 'San Borja', 'San Isidro'], 
+        districts: ['San Miguel', 'San Isidro', 'Surco'], 
         price: 35, 
         rating: 4.7, 
         reviews: 12, 
@@ -55,7 +55,7 @@ const DB_SERVICES = [
         id: 5, 
         title: 'Tutor Universitario Avanzado', 
         category: 'Clases', 
-        districts: ['San Isidro', 'San Borja', 'Surco'], 
+        districts: ['San Isidro', 'San Miguel', 'Surco'], 
         price: 60, 
         rating: 5.0, 
         reviews: 45, 
@@ -65,11 +65,81 @@ const DB_SERVICES = [
         id: 6, 
         title: 'Asesor Metodológico Tesis', 
         category: 'Clases', 
-        districts: ['Miraflores', 'Todos'], 
+        districts: ['San Isidro', 'Todos'], 
         price: 75, 
         rating: 4.9, 
         reviews: 28, 
         desc: 'Revisión exhaustiva, control de citación APA y orientación metodológica para trabajos finales.' 
+    },
+    { 
+        id: 7, 
+        title: 'Diseño Gráfico & Edición de Video', 
+        category: 'Servicios Profesionales', 
+        districts: ['San Miguel', 'Surco', 'Todos'], 
+        price: 50, 
+        rating: 4.9, 
+        reviews: 19, 
+        desc: 'Creación de piezas visuales, branding para proyectos y edición ágil de video/reels académicos.' 
+    },
+    { 
+        id: 8, 
+        title: 'Redacción & Corrección de Estilo', 
+        category: 'Servicios Profesionales', 
+        districts: ['San Isidro', 'Surco', 'San Miguel'], 
+        price: 45, 
+        rating: 4.8, 
+        reviews: 24, 
+        desc: 'Revisión de sintaxis, normas APA/Vancouver y pulido de redacción para ensayos y papers UPC.' 
+    },
+    { 
+        id: 9, 
+        title: 'Programación & Desarrollo Web', 
+        category: 'Servicios Profesionales', 
+        districts: ['San Miguel', 'Surco', 'Todos'], 
+        price: 60, 
+        rating: 5.0, 
+        reviews: 38, 
+        desc: 'Tutoría en código (Python, JS, C++), desarrollo frontend/backend y debugging de software.' 
+    },
+    { 
+        id: 10, 
+        title: 'Idiomas & Traducción Académica', 
+        category: 'Clases', 
+        districts: ['San Isidro', 'San Miguel', 'Todos'], 
+        price: 50, 
+        rating: 4.9, 
+        reviews: 21, 
+        desc: 'Asesoría en inglés universitario, preparación TOEFL/IELTS y traducción de literatura técnica.' 
+    },
+    { 
+        id: 11, 
+        title: 'Orientación Vocacional & Mentoría', 
+        category: 'Social/Asistencia', 
+        districts: ['Surco', 'San Miguel', 'San Isidro'], 
+        price: 45, 
+        rating: 4.8, 
+        reviews: 15, 
+        desc: 'Sesiones 1-a-1 de mentoría de carrera, optimización de CV/LinkedIn y preparación de entrevistas.' 
+    },
+    { 
+        id: 12, 
+        title: 'Fotografía Profesional', 
+        category: 'Servicios Profesionales', 
+        districts: ['San Isidro', 'San Miguel', 'Surco'], 
+        price: 55, 
+        rating: 4.9, 
+        reviews: 18, 
+        desc: 'Sesiones de fotos de perfil profesional para LinkedIn, eventos académicos y proyectos multimedia.' 
+    },
+    { 
+        id: 13, 
+        title: 'Consultoría en Inteligencia Artificial', 
+        category: 'Clases', 
+        districts: ['San Miguel', 'Surco', 'Todos'], 
+        price: 55, 
+        rating: 5.0, 
+        reviews: 42, 
+        desc: 'Dominio práctico de herramientas de IA generativa aplicadas a investigación y productividad ética.' 
     }
 ];
 
@@ -90,7 +160,7 @@ const DB_ADMIN_REQUESTS = [
         status: 'En matching',
         statusClass: 'bg-yellow-50 text-yellow-700 border border-yellow-100',
         date: '29/10/2026',
-        district: 'Miraflores'
+        district: 'San Miguel'
     },
     {
         id: 'S-003',

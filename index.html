@@ -180,7 +180,7 @@
                         Ver todas <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-soft hover:shadow-floating transition-all cursor-pointer group" onclick="navigate('view-catalog')">
                         <div class="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-shield-halved"></i>
@@ -200,7 +200,14 @@
                             <i class="fa-solid fa-book-open-reader"></i>
                         </div>
                         <h3 class="font-bold text-gray-900 text-xl mb-3 group-hover:text-emerald-700 transition-colors">Clases Especializadas</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Reforzamiento académico avanzado, finanzas y asesoría metodológica de tesis.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Reforzamiento académico avanzado, finanzas, tesis y consultoría en IA.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-soft hover:shadow-floating transition-all cursor-pointer group" onclick="navigate('view-catalog')">
+                        <div class="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-xl mb-3 group-hover:text-emerald-700 transition-colors">Servicios Profesionales</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Diseño gráfico, edición de video, programación web, redacción y fotografía.</p>
                     </div>
                 </div>
             </div>
@@ -297,6 +304,9 @@
                                         <label class="flex items-center gap-3 cursor-pointer select-none">
                                             <input type="checkbox" value="Clases" checked class="category-filter accent-emerald-600 w-4 h-4 rounded"> Clases
                                         </label>
+                                        <label class="flex items-center gap-3 cursor-pointer select-none">
+                                            <input type="checkbox" value="Servicios Profesionales" checked class="category-filter accent-emerald-600 w-4 h-4 rounded"> Servicios Profesionales
+                                        </label>
                                     </div>
                                 </div>
                                 
@@ -305,9 +315,8 @@
                                     <select id="filter-district" class="w-full bg-gray-50 border border-gray-200 text-gray-800 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600 text-sm font-medium cursor-pointer">
                                         <option value="Todos">Todos los distritos</option>
                                         <option value="San Isidro">San Isidro</option>
-                                        <option value="Miraflores">Miraflores</option>
                                         <option value="Surco">Surco</option>
-                                        <option value="San Borja">San Borja</option>
+                                        <option value="San Miguel">San Miguel</option>
                                     </select>
                                 </div>
 
@@ -379,17 +388,35 @@
                                 <label for="req-service" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Servicio Elegido</label>
                                 <input type="text" id="req-service" class="w-full bg-gray-50 border border-gray-200 text-gray-800 px-5 py-3.5 rounded-xl font-semibold outline-none" readonly>
                             </div>
-                            <div>
-                                <label for="req-date" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Fecha y Ocasión</label>
-                                <input type="text" id="req-date" placeholder="Ej. Este sábado noche, evento formal" class="w-full bg-white border border-gray-200 text-gray-900 px-5 py-3.5 rounded-xl focus:ring-2 focus:ring-emerald-600 outline-none transition-all" required>
+                            <!-- Selector Estructurado de Fecha y Hora (Calendario) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="req-date" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                                        <i class="fa-regular fa-calendar-days text-emerald-600 text-xs"></i> Fecha del Servicio
+                                    </label>
+                                    <input type="date" id="req-date" class="w-full bg-white border border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:ring-2 focus:ring-emerald-600 outline-none transition-all cursor-pointer font-medium text-sm" required>
+                                </div>
+                                <div>
+                                    <label for="req-time" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                                        <i class="fa-regular fa-clock text-emerald-600 text-xs"></i> Hora Estimada
+                                    </label>
+                                    <input type="time" id="req-time" value="15:00" class="w-full bg-white border border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:ring-2 focus:ring-emerald-600 outline-none transition-all cursor-pointer font-medium text-sm" required>
+                                </div>
                             </div>
                             <div>
-                                <label for="req-district" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Distrito en Lima</label>
+                                <label for="req-occasion" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                                    Detalle u Ocasión <span class="text-gray-400 font-normal lowercase">(opcional)</span>
+                                </label>
+                                <input type="text" id="req-occasion" placeholder="Ej. Preparación examen final, traslado nocturno, asesoría tesis..." class="w-full bg-white border border-gray-200 text-gray-900 px-5 py-3.5 rounded-xl focus:ring-2 focus:ring-emerald-600 outline-none transition-all text-sm">
+                            </div>
+                            <div>
+                                <label for="req-district" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-location-dot text-emerald-600 text-xs"></i> Distrito en Lima
+                                </label>
                                 <select id="req-district" class="w-full bg-white border border-gray-200 text-gray-900 px-5 py-3.5 rounded-xl focus:ring-2 focus:ring-emerald-600 outline-none transition-all cursor-pointer">
                                     <option value="San Isidro">San Isidro</option>
-                                    <option value="Miraflores">Miraflores</option>
                                     <option value="Surco">Surco</option>
-                                    <option value="San Borja">San Borja</option>
+                                    <option value="San Miguel">San Miguel</option>
                                 </select>
                             </div>
                             <button type="submit" class="w-full bg-gray-900 hover:bg-emerald-700 text-white font-semibold py-4 rounded-xl transition-all mt-4 flex items-center justify-center gap-3 shadow-md transform hover:-translate-y-0.5">

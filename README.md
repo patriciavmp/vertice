@@ -15,12 +15,13 @@ Plataforma web de confianza y vinculación de servicios especializados (segurida
    - Acceso exclusivo al catálogo protegido.
 
 2. **Catálogo de Servicios y Filtros Reactivos:**
-   - Filtro multicategoría (Seguridad / Resguardo, Social / Asistencia, Clases Especializadas).
-   - Filtro por distritos de Lima Metropolitana (San Isidro, Miraflores, Surco, San Borja, etc.).
+   - Filtro multicategoría (Seguridad / Resguardo, Social / Asistencia, Clases Especializadas, Servicios Profesionales).
+   - Filtro por distritos clave de Lima y Campus UPC (San Isidro, Surco, San Miguel, etc.).
    - Rango dinámico de tarifas por hora con actualización instantánea.
 
-3. **Flujo de Solicitud y Curaduría Humana:**
+3. **Flujo de Solicitud y Agendamiento con Calendario:**
    - Formulario de requerimiento paso a paso con barra de progreso.
+   - Selector interactivo de fecha (calendario nativo) y hora estimada con bloqueo de fechas pasadas.
    - Animación de matching y verificación por el equipo de conserjería.
 
 4. **Ficha de Especialista con Identidad Protegida:**

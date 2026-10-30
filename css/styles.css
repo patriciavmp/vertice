@@ -187,6 +187,23 @@ body {
     border: 1px solid #374151;
 }
 
+/* Date & Time Picker Controls */
+input[type="date"], input[type="time"] {
+    position: relative;
+    font-family: inherit;
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 /* Estilos de impresión y captura PDF */
 @media print {
     body {

@@ -414,13 +414,38 @@ function goToRequest(name, category, price, district) {
     navigate('view-request');
 }
 
+// Formateador legible para fecha, hora y ocasión de la reserva
+function formatServiceDateTime(dateStr, timeStr, occasionStr) {
+    if (!dateStr) return 'Próxima fecha a convenir';
+    const parts = dateStr.split('-');
+    let formatted = dateStr;
+    if (parts.length === 3) {
+        const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Dic'];
+        const day = parseInt(parts[2], 10);
+        const month = months[parseInt(parts[1], 10) - 1] || '';
+        const year = parts[0];
+        formatted = `${day} ${month} ${year}`;
+    }
+    if (timeStr) {
+        formatted += ` • ${timeStr} hrs`;
+    }
+    if (occasionStr) {
+        formatted += ` (${occasionStr})`;
+    }
+    return formatted;
+}
+
 function submitRequest(e) {
     e.preventDefault();
 
     const formArea = document.getElementById('request-form-area');
     const loadingArea = document.getElementById('request-loading');
 
-    appState.service.date = document.getElementById('req-date')?.value || 'Próximo fin de semana';
+    const rawDate = document.getElementById('req-date')?.value;
+    const rawTime = document.getElementById('req-time')?.value;
+    const rawOccasion = document.getElementById('req-occasion')?.value?.trim();
+
+    appState.service.date = formatServiceDateTime(rawDate, rawTime, rawOccasion);
     appState.service.district = document.getElementById('req-district')?.value || 'San Isidro';
 
     // Rellenar datos en vistas siguientes
@@ -711,6 +736,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 sendUserChatMessage();
             }
         });
+    }
+
+    // Configurar selector de fecha mínima (hoy) para la reserva
+    const reqDateInput = document.getElementById('req-date');
+    if (reqDateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        reqDateInput.min = `${yyyy}-${mm}-${dd}`;
+
+        // Fecha sugerida por defecto: mañana
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tYyyy = tomorrow.getFullYear();
+        const tMm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const tDd = String(tomorrow.getDate()).padStart(2, '0');
+        reqDateInput.value = `${tYyyy}-${tMm}-${tDd}`;
     }
 
     // Renderizar catálogo inicial
