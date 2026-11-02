@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VÉRTICE UPC — Cuarto Avance: Validación del Prototipo e Iteración</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1f2937;
+            background-color: #f8fafc;
+        }
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .shadow-box {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="py-10 px-4 sm:px-6 lg:px-8">
+
+    <!-- Barra de Acciones Flotante (No Imprimir) -->
+    <div class="no-print max-w-4xl mx-auto mb-6 flex justify-between items-center bg-gray-900 text-white p-4 rounded-2xl shadow-xl">
+        <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-sm font-semibold tracking-wide">Informe Cuarto Avance • VÉRTICE UPC</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="https://patriciavmp.github.io/vertice/" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition">
+                <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Ver Prototipo Web
+            </a>
+            <button onclick="window.print()" class="bg-white hover:bg-gray-100 text-gray-900 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-print"></i> Imprimir / Guardar como PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal del Documento A4 / Reporte -->
+    <main class="max-w-4xl mx-auto bg-white p-8 sm:p-14 rounded-3xl shadow-box border border-slate-200">
+        
+        <!-- Portada Académica UPC -->
+        <header class="border-b border-slate-200 pb-10 mb-10 text-center">
+            <div class="inline-block bg-emerald-50 text-emerald-800 text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full border border-emerald-200 mb-6">
+                Universidad Peruana de Ciencias Aplicadas (UPC)
+            </div>
+            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Programa Académico Electivo</h3>
+            <p class="text-sm font-medium text-slate-600 mb-6">Emprendimiento de Negocios Sostenibles: Formulación de Nuevos Sistemas</p>
+            
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                Cuarto Avance: VALIDACIÓN DEL PROTOTIPO E ITERACIÓN
+            </h1>
+            <h2 class="text-xl font-bold text-emerald-700 mb-8">
+                Proyecto: VÉRTICE — Red de Confianza y Servicios Especializados
+            </h2>
+
+            <!-- Ficha Técnica de Integrantes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left bg-slate-50 p-6 rounded-2xl border border-slate-200 text-xs">
+                <div>
+                    <p class="font-bold text-slate-400 uppercase tracking-widest mb-2">Equipo Emprendedor (Grupo)</p>
+                    <ul class="space-y-1.5 font-semibold text-slate-800">
+                        <li>• Guerreros Raynalate, Luciana <span class="font-mono text-slate-500">(u202219491)</span> — 25%</li>
+                        <li>• Bejarano Martínez, Diego Alejandro <span class="font-mono text-slate-500">(u20211g5058)</span> — 25%</li>
+                        <li>• Mejia Poma, Patricia Valeria <span class="font-mono text-slate-500">(u202523271)</span> — 25%</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold text-slate-400 uppercase tracking-widest mb-2">Docente & Datos del Curso</p>
+                    <p class="font-semibold text-slate-800">Profesor: <span class="font-normal">Delgado Saavedra, Iván Gustavo</span></p>
+                    <p class="font-semibold text-slate-800 mt-1">Metodología: <span class="font-normal">Lean Startup (Construir → Medir → Aprender → Mejorar)</span></p>
+                    <p class="font-semibold text-slate-800 mt-1">Periodo: <span class="font-normal">Octubre / Noviembre 2026 - 2</span></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tabla de Enlaces Funcionales -->
+        <section class="mb-12">
+            <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-link text-emerald-600"></i> Enlaces Oficiales y Funcionales del Proyecto
+            </h3>
+            <div class="overflow-hidden border border-slate-200 rounded-2xl shadow-sm">
+                <table class="w-full text-left text-xs sm:text-sm">
+                    <thead class="bg-slate-50 text-slate-600 font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
+                        <tr>
+                            <th class="p-3.5">Recurso</th>
+                            <th class="p-3.5">Acceso Directo</th>
+                            <th class="p-3.5">Estado Operativo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-3.5 font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-globe text-emerald-600"></i> Prototipo Web Funcional
+                            </td>
+                            <td class="p-3.5 font-mono text-emerald-700 font-medium">
+                                <a href="https://patriciavmp.github.io/vertice/" target="_blank" class="underline">https://patriciavmp.github.io/vertice/</a>
+                            </td>
+                            <td class="p-3.5">
+                                <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-full">100% Operativo (En Vivo)</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-3.5 font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-blue-600"></i> Encuesta de Validación (Google Forms)
+                            </td>
+                            <td class="p-3.5 font-mono text-blue-700 font-medium">
+                                <a href="https://docs.google.com/forms/d/1_rX2liwCiYmHaMHFGYBCJ2ZZboIP1PkNBs2XyB-4ZSc" target="_blank" class="underline">Google Forms VÉRTICE</a>
+                            </td>
+                            <td class="p-3.5">
+                                <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-2.5 py-1 rounded-full">Activa & Mapeada</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-3.5 font-bold flex items-center gap-2">
+                                <i class="fa-brands fa-github text-slate-800"></i> Repositorio de Código
+                            </td>
+                            <td class="p-3.5 font-mono text-slate-800 font-medium">
+                                <a href="https://github.com/patriciavmp/vertice" target="_blank" class="underline">github.com/patriciavmp/vertice</a>
+                            </td>
+                            <td class="p-3.5">
+                                <span class="bg-slate-100 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full">CI/CD GitHub Pages</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 1. Resumen Ejecutivo -->
+        <section class="mb-12">
+            <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 mb-4">
+                1. Resumen Ejecutivo y Propuesta de Valor
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                <strong>VÉRTICE</strong> es una plataforma web y red de confianza orientada a resolver los altos riesgos de inseguridad, informalidad y falta de verificación que sufren los estudiantes y docentes de la <strong>UPC</strong> al contratar servicios de tutoría académica, traslados seguros, asistencia y soporte profesional en grupos no verificados de redes sociales.
+            </p>
+            <div class="p-5 bg-emerald-50 rounded-2xl border-l-4 border-emerald-600 mb-6">
+                <p class="text-emerald-900 text-sm italic font-medium leading-relaxed">
+                    "¿Cansado/a de buscar profesores o especialistas poco confiables en redes sociales? VÉRTICE conecta a la comunidad universitaria con expertos verificados en clases y servicios profesionales directamente por WhatsApp."
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <p class="font-bold text-slate-900 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-lock text-emerald-600"></i> Filtro Institucional Exclusivo</p>
+                    <p class="text-slate-600">Acceso restringido validando en tiempo real el código de alumno/docente de la UPC (ej. <code class="font-mono bg-white px-1 py-0.5 rounded border">u20XXXXXX</code>).</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <p class="font-bold text-slate-900 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-user-shield text-emerald-600"></i> Conserje Humano & Curaduría</p>
+                    <p class="text-slate-600">Asignación supervisada por un gestor que verifica antecedentes policiales y penales de cada especialista.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <p class="font-bold text-slate-900 mb-1 flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Canal Nativo WhatsApp</p>
+                    <p class="text-slate-600">Toda la comunicación fluye con inmediatez en el canal predilecto de los estudiantes, sin instalaciones adicionales.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                    <p class="font-bold text-slate-900 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-emerald-600"></i> Respaldo Formal con Recibo PDF</p>
+                    <p class="text-slate-600">Generación y descarga automática de constancia oficial de reserva tras abonar la seña (Yape / Plin).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Resultados de la Validación -->
+        <section class="mb-12 page-break">
+            <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 mb-6">
+                2. Resultados de la Validación con Usuarios (Muestra N = 69)
+            </h3>
+            
+            <div class="space-y-4 text-xs sm:text-sm">
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">1. Pertenencia a la Comunidad UPC</span>
+                        <span class="font-mono font-bold text-emerald-700">100% de la muestra</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">69 de 69 encuestados son estudiantes o miembros activos de la UPC, garantizando total fiabilidad muestral.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">2. Seguridad percibida con el Código Institucional UPC</span>
+                        <span class="font-mono font-bold text-emerald-700">4.8 / 5.0 (78.6% Nivel Máximo)</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Validó que los usuarios consideran el login institucional como una barrera indispensable frente a perfiles falsos.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">3. Usabilidad de la Interfaz y Exploración del Catálogo</span>
+                        <span class="font-mono font-bold text-emerald-700">4.7 / 5.0 (71.4% Muy fácil)</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">El catálogo responsivo permite encontrar un servicio en menos de 1 minuto sin curvas de aprendizaje complejas.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">4. Valoración del Conserje Humano (Gestor)</span>
+                        <span class="font-mono font-bold text-emerald-700">4.9 / 5.0 (85.7% Calificación 5)</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Es el diferenciador con mayor puntaje del proyecto, generando confianza muy por encima de bots comunes.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200 bg-amber-50/50 border-amber-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-amber-900">5. Disposición al pago de seña adelantada (Yape / Plin)</span>
+                        <span class="font-mono font-bold text-amber-800">50% exige comprobante digital inmediato</span>
+                    </div>
+                    <p class="text-amber-700 text-xs"><strong>Hallazgo crítico:</strong> El 50% de los usuarios no transferiría una seña sin un contrato o recibo formal inmediato emitido en el acto.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">6. Intención de Uso de VÉRTICE</span>
+                        <span class="font-mono font-bold text-emerald-700">92.9% Intención Positiva</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">64.3% "Definitivamente sí" y 28.6% "Probablemente sí", validando alta tracción y demanda en la comunidad.</p>
+                </div>
+
+                <div class="p-4 rounded-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">7. Rango de Tarifas por Hora (S/ 40 a S/ 60)</span>
+                        <span class="font-mono font-bold text-emerald-700">71.4% Adecuada • 21.4% Económica</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">El umbral de tarifas se alinea perfectamente con la capacidad adquisitiva y el valor de seguridad otorgado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Prototipo Mejorado -->
+        <section class="mb-12">
+            <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 mb-6">
+                3. Prototipo Mejorado: VÉRTICE Web App (9 Pantallas SPA)
+            </h3>
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                En esta iteración se migró de prototipos estáticos a una aplicación web <strong>Single Page Application (SPA)</strong> completa, responsiva y funcional construida con HTML5, Tailwind CSS y Vanilla JS. Se resolvieron los 5 ejes señalados en la retroalimentación docente:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-8">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 text-emerald-700">1. Agendamiento con Calendario Nativo</h4>
+                    <p class="text-slate-600">Se eliminó el campo de texto libre arbitrario. Ahora cuenta con selectores de fecha (<code class="bg-white px-1 rounded">type="date"</code>) con fecha mínima bloqueada para días pasados, selector de hora y campo opcional para contexto.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 text-emerald-700">2. Generación Instantánea de Constancia PDF</h4>
+                    <p class="text-slate-600">Respondiendo al 50% de usuarios reticentes al pago, se integró el motor client-side <code class="bg-white px-1 rounded">html2pdf.js</code> que genera y descarga una constancia con código QR y marca de agua institucional.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 text-emerald-700">3. Ampliación a 13 Servicios Profesionales</h4>
+                    <p class="text-slate-600">A partir de las respuestas abiertas del formulario, se agregaron diseño gráfico, edición de video, desarrollo web, redacción de estilo, fotografía y consultoría en IA.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 text-emerald-700">4. Distritos Alineados a Campus UPC</h4>
+                    <p class="text-slate-600">Se reemplazó San Borja por <strong>San Miguel</strong> (sede del Campus San Miguel de la UPC) y se suprimió Miraflores, quedando: San Isidro, Surco y San Miguel.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 md:col-span-2">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2 text-emerald-700">5. Acceso Protegido por Roles (Conserje Admin)</h4>
+                    <p class="text-slate-600">El panel interno administrativo ya no está expuesto públicamente en el navbar. Requiere credenciales de conserjería (<code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-300">ADMIN2026</code>), asegurando la privacidad de las métricas.</p>
+                </div>
+            </div>
+
+            <!-- Tabla Resumen del Catálogo -->
+            <h4 class="font-bold text-slate-900 text-sm mb-3">Catálogo Actualizado de Especialistas Protegidos (13 Servicios)</h4>
+            <div class="overflow-x-auto border border-slate-200 rounded-2xl text-xs">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px]">
+                        <tr>
+                            <th class="p-3">ID</th>
+                            <th class="p-3">Servicio</th>
+                            <th class="p-3">Categoría</th>
+                            <th class="p-3">Distritos UPC</th>
+                            <th class="p-3">Tarifa / h</th>
+                            <th class="p-3">Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr><td class="p-3 font-bold">1</td><td class="p-3">Chofer de Seguridad</td><td class="p-3">Seguridad</td><td class="p-3">San Isidro, Surco</td><td class="p-3 font-bold">S/ 45</td><td class="p-3">⭐ 4.9 (31)</td></tr>
+                        <tr><td class="p-3 font-bold">2</td><td class="p-3">Acompañamiento Ejecutivo</td><td class="p-3">Social/Asistencia</td><td class="p-3">San Isidro, Surco</td><td class="p-3 font-bold">S/ 50</td><td class="p-3">⭐ 4.8 (17)</td></tr>
+                        <tr><td class="p-3 font-bold">3</td><td class="p-3">Custodia Temporal</td><td class="p-3">Seguridad</td><td class="p-3">San Miguel, Surco</td><td class="p-3 font-bold">S/ 40</td><td class="p-3">⭐ 4.9 (23)</td></tr>
+                        <tr><td class="p-3 font-bold">4</td><td class="p-3">Facilitador de Eventos</td><td class="p-3">Social/Asistencia</td><td class="p-3">San Miguel, San Isidro, Surco</td><td class="p-3 font-bold">S/ 35</td><td class="p-3">⭐ 4.7 (12)</td></tr>
+                        <tr><td class="p-3 font-bold">5</td><td class="p-3">Tutor Universitario Avanzado</td><td class="p-3">Clases</td><td class="p-3">San Isidro, San Miguel, Surco</td><td class="p-3 font-bold">S/ 60</td><td class="p-3">⭐ 5.0 (45)</td></tr>
+                        <tr><td class="p-3 font-bold">6</td><td class="p-3">Asesor Metodológico Tesis</td><td class="p-3">Clases</td><td class="p-3">San Isidro, Todos</td><td class="p-3 font-bold">S/ 75</td><td class="p-3">⭐ 4.9 (28)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">7</td><td class="p-3">Diseño Gráfico & Edición Video</td><td class="p-3">Servicios Profesionales</td><td class="p-3">San Miguel, Surco, Todos</td><td class="p-3 font-bold">S/ 50</td><td class="p-3">⭐ 4.9 (19)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">8</td><td class="p-3">Redacción & Corrección Estilo</td><td class="p-3">Servicios Profesionales</td><td class="p-3">San Isidro, Surco, San Miguel</td><td class="p-3 font-bold">S/ 45</td><td class="p-3">⭐ 4.8 (24)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">9</td><td class="p-3">Programación & Desarrollo Web</td><td class="p-3">Servicios Profesionales</td><td class="p-3">San Miguel, Surco, Todos</td><td class="p-3 font-bold">S/ 60</td><td class="p-3">⭐ 5.0 (38)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">10</td><td class="p-3">Idiomas & Traducción Académica</td><td class="p-3">Clases</td><td class="p-3">San Isidro, San Miguel, Todos</td><td class="p-3 font-bold">S/ 50</td><td class="p-3">⭐ 4.9 (21)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">11</td><td class="p-3">Orientación Vocacional & Mentoría</td><td class="p-3">Social/Asistencia</td><td class="p-3">Surco, San Miguel, San Isidro</td><td class="p-3 font-bold">S/ 45</td><td class="p-3">⭐ 4.8 (15)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">12</td><td class="p-3">Fotografía Profesional</td><td class="p-3">Servicios Profesionales</td><td class="p-3">San Isidro, San Miguel, Surco</td><td class="p-3 font-bold">S/ 55</td><td class="p-3">⭐ 4.9 (18)</td></tr>
+                        <tr class="bg-emerald-50/50"><td class="p-3 font-bold">13</td><td class="p-3">Consultoría en Inteligencia Artificial</td><td class="p-3">Clases</td><td class="p-3">San Miguel, Surco, Todos</td><td class="p-3 font-bold">S/ 55</td><td class="p-3">⭐ 5.0 (42)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. Encuesta Mejorada y Mapeo -->
+        <section class="mb-12 page-break">
+            <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 mb-6">
+                4. Encuesta de Validación Mejorada (Mapeo de Indicadores Lean)
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                El instrumento en Google Forms fue optimizado eliminando redundancias y estructurado directamente contra los <strong>8 aspectos de medición requeridos por la cátedra</strong>:
+            </p>
+            <div class="overflow-hidden border border-slate-200 rounded-2xl text-xs">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 text-slate-700 font-bold uppercase text-[10px] border-b border-slate-200">
+                        <tr>
+                            <th class="p-3">Aspecto Evaluado</th>
+                            <th class="p-3">Pregunta del Formulario</th>
+                            <th class="p-3">Formato</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">1. Comprensión</td>
+                            <td class="p-3">¿Qué tan seguro te sentirías contratando un servicio verificado dentro de una red exclusiva para miembros UPC vía WhatsApp?</td>
+                            <td class="p-3 font-mono text-slate-500">Opción Múltiple</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">2. Facilidad de Uso</td>
+                            <td class="p-3">Actualmente, ¿dónde sueles buscar o contratar estos servicios cuando los necesitas? (Barreras actuales frente a WhatsApp).</td>
+                            <td class="p-3 font-mono text-slate-500">Opción Múltiple</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">3. Utilidad</td>
+                            <td class="p-3">¿Con qué frecuencia sueles necesitar apoyo externo para asesorías académicas o servicios profesionales?</td>
+                            <td class="p-3 font-mono text-slate-500">Opción Múltiple</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">4. Problemas Encontrados</td>
+                            <td class="p-3">¿Qué es lo que más te detendría o generaría desconfianza al momento de contratar un servicio por este medio?</td>
+                            <td class="p-3 font-mono text-slate-500">Texto Abierto</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">5. Intención de Uso</td>
+                            <td class="p-3">¿Qué tan dispuesto estarías a utilizar VÉRTICE a través de WhatsApp para contratar un servicio especializado de forma rápida?</td>
+                            <td class="p-3 font-mono text-slate-500">Opción Múltiple</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">6. Disposición a Pagar</td>
+                            <td class="p-3">Considerando tarifas promedio de mercado de S/ 45 a S/ 60 por hora según el servicio, ¿te parece adecuado?</td>
+                            <td class="p-3 font-mono text-slate-500">Opción Múltiple</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">7. Satisfacción</td>
+                            <td class="p-3">En escala del 1 al 5, ¿qué tan importante es que los especialistas cuenten con reseñas y calificaciones de otros estudiantes?</td>
+                            <td class="p-3 font-mono text-slate-500">Escala 1 al 5</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold text-emerald-800">8. Recomendaciones</td>
+                            <td class="p-3">Además de asesorías académicas, ¿qué otros servicios profesionales te gustaría encontrar en VÉRTICE?</td>
+                            <td class="p-3 font-mono text-slate-500">Casillas Múltiples</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. Próximos Pasos -->
+        <section class="border-t border-slate-200 pt-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">
+                5. Próximos Pasos en el Ciclo Lean Startup
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center text-xs">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center mx-auto mb-2">1</div>
+                    <p class="font-bold text-slate-800">Probar</p>
+                    <p class="text-slate-500 mt-1">Nuevas sesiones con el prototipo web en vivo en San Miguel, Surco y San Isidro.</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center mx-auto mb-2">2</div>
+                    <p class="font-bold text-slate-800">Medir</p>
+                    <p class="text-slate-500 mt-1">Registrar métricas de conversión con la encuesta optimizada de Google Forms.</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center mx-auto mb-2">3</div>
+                    <p class="font-bold text-slate-800">Aprender</p>
+                    <p class="text-slate-500 mt-1">Evaluar la recepción del recibo digital en PDF y la demanda de IA y diseño.</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center mx-auto mb-2">4</div>
+                    <p class="font-bold text-slate-800">Mejorar</p>
+                    <p class="text-slate-500 mt-1">Refinar los tiempos de matching y pulir la pasarela para el informe final.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-6 border-t border-slate-100 text-center text-slate-400 text-xs">
+            <p>© 2026 VÉRTICE UPC — Plataforma de Confianza y Servicios Especializados.</p>
+            <p class="mt-1">Universidad Peruana de Ciencias Aplicadas (UPC) • Formulación de Nuevos Sistemas</p>
+        </footer>
+
+    </main>
+</body>
+</html>
