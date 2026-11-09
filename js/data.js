@@ -11,164 +11,181 @@ const APP_CONFIG = {
 };
 
 const DB_SERVICES = [
+    // 1. Cursos y Tutorías
     { 
         id: 1, 
-        title: 'Chofer de Seguridad', 
-        category: 'Seguridad', 
-        districts: ['San Isidro', 'Surco'], 
-        price: 45, 
+        title: 'Tutoría en Cálculo y Matemáticas', 
+        category: 'Cursos y Tutorías', 
+        districts: ['San Miguel', 'Surco', 'San Isidro'], 
+        price: 35, 
         rating: 4.9, 
-        reviews: 31, 
-        desc: 'Traslados seguros con conductor verificado. Vehículo discreto y revisión técnica al día.' 
+        reviews: 42, 
+        desc: 'Preparación para PCs y exámenes de Cálculo I, II, Álgebra Lineal y Matemática Básica con ejercicios resueltos paso a paso.' 
     },
     { 
         id: 2, 
-        title: 'Acompañamiento Ejecutivo', 
-        category: 'Social/Asistencia', 
-        districts: ['San Isidro', 'Surco'], 
-        price: 50, 
-        rating: 4.8, 
-        reviews: 17, 
-        desc: 'Escolta discreto y protocolar para reuniones y eventos nocturnos de alta exigencia.' 
+        title: 'Asesoría en Estadística y Minitab', 
+        category: 'Cursos y Tutorías', 
+        districts: ['San Isidro', 'Surco', 'San Miguel'], 
+        price: 40, 
+        rating: 4.9, 
+        reviews: 35, 
+        desc: 'Estadística Aplicada I y II, probabilidades, pruebas de hipótesis y procesamiento de datos en Minitab, SPSS y Excel.' 
     },
     { 
         id: 3, 
-        title: 'Custodia Temporal', 
-        category: 'Seguridad', 
-        districts: ['San Miguel', 'Surco'], 
-        price: 40, 
-        rating: 4.9, 
-        reviews: 23, 
-        desc: 'Resguardo de personas o pertenencias de valor en traslados o estancias por horas establecidas.' 
+        title: 'Refuerzo en Finanzas y Contabilidad', 
+        category: 'Cursos y Tutorías', 
+        districts: ['San Isidro', 'Surco'], 
+        price: 45, 
+        rating: 4.8, 
+        reviews: 28, 
+        desc: 'Contabilidad Financiera, Costos, Evaluación de Proyectos y Finanzas Corporativas para carreras de Negocios y Economía.' 
     },
     { 
         id: 4, 
-        title: 'Facilitador de Eventos', 
-        category: 'Social/Asistencia', 
-        districts: ['San Miguel', 'San Isidro', 'Surco'], 
+        title: 'Clases de Inglés Universitario', 
+        category: 'Cursos y Tutorías', 
+        districts: ['San Miguel', 'San Isidro', 'Todos'], 
         price: 35, 
-        rating: 4.7, 
-        reviews: 12, 
-        desc: 'Soporte logístico, coordinación de accesos y acompañamiento dinámico a medida.' 
+        rating: 4.9, 
+        reviews: 31, 
+        desc: 'Preparación intensiva para el examen de suficiencia de inglés UPC, TOEFL, IELTS y conversación aplicada.' 
     },
+
+    // 2. Tareas y Entregables
     { 
         id: 5, 
-        title: 'Tutor Universitario Avanzado', 
-        category: 'Clases', 
-        districts: ['San Isidro', 'San Miguel', 'Surco'], 
-        price: 60, 
-        rating: 5.0, 
-        reviews: 45, 
-        desc: 'Reforzamiento académico especializado en finanzas, ingeniería y ciencias aplicadas UPC.' 
+        title: 'Apoyo en Tareas y Guías Prácticas', 
+        category: 'Tareas y Entregables', 
+        districts: ['San Miguel', 'Surco', 'San Isidro'], 
+        price: 30, 
+        rating: 4.9, 
+        reviews: 53, 
+        desc: 'Orientación personalizada para resolver guías de ejercicios, talleres semanales y reportes de laboratorio según rúbrica.' 
     },
     { 
         id: 6, 
-        title: 'Asesor Metodológico Tesis', 
-        category: 'Clases', 
-        districts: ['San Isidro', 'Todos'], 
-        price: 75, 
-        rating: 4.9, 
-        reviews: 28, 
-        desc: 'Revisión exhaustiva, control de citación APA y orientación metodológica para trabajos finales.' 
+        title: 'Preparación de Diapositivas y Exposiciones', 
+        category: 'Tareas y Entregables', 
+        districts: ['Surco', 'San Miguel', 'Todos'], 
+        price: 35, 
+        rating: 4.8, 
+        reviews: 26, 
+        desc: 'Diseño de presentaciones PPT/Canva de alto impacto visual, estructura del pitch y simulacro de preguntas del jurado.' 
     },
     { 
         id: 7, 
-        title: 'Diseño Gráfico & Edición de Video', 
-        category: 'Servicios Profesionales', 
-        districts: ['San Miguel', 'Surco', 'Todos'], 
-        price: 50, 
-        rating: 4.9, 
-        reviews: 19, 
-        desc: 'Creación de piezas visuales, branding para proyectos y edición ágil de video/reels académicos.' 
+        title: 'Revisión de Avances y Trabajos de Ciclo', 
+        category: 'Tareas y Entregables', 
+        districts: ['San Isidro', 'Surco', 'San Miguel'], 
+        price: 40, 
+        rating: 5.0, 
+        reviews: 39, 
+        desc: 'Auditoría integral de estructura, coherencia, redacción y cumplimiento de rúbricas antes de subir tu entrega al Aula Virtual.' 
     },
+
+    // 3. Tesis y Redacción
     { 
         id: 8, 
-        title: 'Redacción & Corrección de Estilo', 
-        category: 'Servicios Profesionales', 
-        districts: ['San Isidro', 'Surco', 'San Miguel'], 
-        price: 45, 
-        rating: 4.8, 
-        reviews: 24, 
-        desc: 'Revisión de sintaxis, normas APA/Vancouver y pulido de redacción para ensayos y papers UPC.' 
+        title: 'Asesor Metodológico de Tesis', 
+        category: 'Tesis y Redacción', 
+        districts: ['San Isidro', 'Surco', 'Todos'], 
+        price: 55, 
+        rating: 5.0, 
+        reviews: 48, 
+        desc: 'Estructuración del proyecto de tesis, planteamiento del problema, marco teórico y diseño metodológico según formato UPC.' 
     },
     { 
         id: 9, 
-        title: 'Programación & Desarrollo Web', 
-        category: 'Servicios Profesionales', 
+        title: 'Normas APA / Vancouver y Turnitin', 
+        category: 'Tesis y Redacción', 
         districts: ['San Miguel', 'Surco', 'Todos'], 
-        price: 60, 
-        rating: 5.0, 
-        reviews: 38, 
-        desc: 'Tutoría en código (Python, JS, C++), desarrollo frontend/backend y debugging de software.' 
+        price: 35, 
+        rating: 4.9, 
+        reviews: 64, 
+        desc: 'Control de porcentaje de similitud en Turnitin, corrección de citaciones, referencias bibliográficas y formato de tablas.' 
     },
     { 
         id: 10, 
-        title: 'Idiomas & Traducción Académica', 
-        category: 'Clases', 
-        districts: ['San Isidro', 'San Miguel', 'Todos'], 
-        price: 50, 
-        rating: 4.9, 
-        reviews: 21, 
-        desc: 'Asesoría en inglés universitario, preparación TOEFL/IELTS y traducción de literatura técnica.' 
+        title: 'Redacción y Corrección de Ensayos', 
+        category: 'Tesis y Redacción', 
+        districts: ['San Isidro', 'San Miguel', 'Surco'], 
+        price: 40, 
+        rating: 4.8, 
+        reviews: 33, 
+        desc: 'Corrección ortotipográfica, fluidez académica, cohesión argumentativa y estilo para ensayos y artículos científicos.' 
     },
+
+    // 4. Software y Diseño
     { 
         id: 11, 
-        title: 'Orientación Vocacional & Mentoría', 
-        category: 'Social/Asistencia', 
-        districts: ['Surco', 'San Miguel', 'San Isidro'], 
+        title: 'Tutoría en Programación (Python / Java / C++)', 
+        category: 'Software y Diseño', 
+        districts: ['San Miguel', 'Surco', 'Todos'], 
         price: 45, 
-        rating: 4.8, 
-        reviews: 15, 
-        desc: 'Sesiones 1-a-1 de mentoría de carrera, optimización de CV/LinkedIn y preparación de entrevistas.' 
+        rating: 5.0, 
+        reviews: 58, 
+        desc: 'Fundamentos de código, algoritmos, programación orientada a objetos, estructuras de datos y debugging de proyectos.' 
     },
     { 
         id: 12, 
-        title: 'Fotografía Profesional', 
-        category: 'Servicios Profesionales', 
-        districts: ['San Isidro', 'San Miguel', 'Surco'], 
-        price: 55, 
+        title: 'Desarrollo Web y Bases de Datos SQL', 
+        category: 'Software y Diseño', 
+        districts: ['San Miguel', 'Surco', 'Todos'], 
+        price: 50, 
         rating: 4.9, 
-        reviews: 18, 
-        desc: 'Sesiones de fotos de perfil profesional para LinkedIn, eventos académicos y proyectos multimedia.' 
+        reviews: 37, 
+        desc: 'Asesoría en desarrollo frontend (HTML/CSS/JS/React), backend, diagramas entidad-relación y consultas complejas en SQL.' 
     },
     { 
         id: 13, 
-        title: 'Consultoría en Inteligencia Artificial', 
-        category: 'Clases', 
+        title: 'Diseño Gráfico y Edición Multimedia', 
+        category: 'Software y Diseño', 
+        districts: ['San Miguel', 'Surco', 'San Isidro'], 
+        price: 40, 
+        rating: 4.9, 
+        reviews: 29, 
+        desc: 'Creación de infografías académicas, maquetación de piezas visuales y edición rápida de video/reels para entregas de cursos.' 
+    },
+    { 
+        id: 14, 
+        title: 'Consultoría en Herramientas de IA para Estudio', 
+        category: 'Software y Diseño', 
         districts: ['San Miguel', 'Surco', 'Todos'], 
-        price: 55, 
+        price: 40, 
         rating: 5.0, 
-        reviews: 42, 
-        desc: 'Dominio práctico de herramientas de IA generativa aplicadas a investigación y productividad ética.' 
+        reviews: 44, 
+        desc: 'Uso ético y productivo de IA (ChatGPT, Claude, Perplexity) para estructurar investigación, generar resúmenes y estudiar mejor.' 
     }
 ];
 
 const DB_ADMIN_REQUESTS = [
     {
         id: 'S-001',
-        code: 'u2012345',
-        service: 'Chofer Seguridad',
+        code: 'u202219491',
+        service: 'Tutoría Cálculo II',
         status: 'Confirmado',
         statusClass: 'bg-emerald-50 text-emerald-700 border border-emerald-100',
-        date: '28/10/2026',
-        district: 'San Isidro'
-    },
-    {
-        id: 'S-002',
-        code: 'u2098765',
-        service: 'Asesor Tesis',
-        status: 'En matching',
-        statusClass: 'bg-yellow-50 text-yellow-700 border border-yellow-100',
-        date: '29/10/2026',
+        date: '08/11/2026',
         district: 'San Miguel'
     },
     {
+        id: 'S-002',
+        code: 'u20211g5058',
+        service: 'Asesor Metodológico Tesis',
+        status: 'En matching',
+        statusClass: 'bg-yellow-50 text-yellow-700 border border-yellow-100',
+        date: '09/11/2026',
+        district: 'Surco'
+    },
+    {
         id: 'S-003',
-        code: 'u2045678',
-        service: 'Acompañamiento',
+        code: 'u202523271',
+        service: 'Revisión Turnitin y APA',
         status: 'Nuevo (Esperando)',
         statusClass: 'bg-blue-50 text-blue-700 border border-blue-100',
-        date: '29/10/2026',
-        district: 'Surco'
+        date: '09/11/2026',
+        district: 'San Isidro'
     }
 ];

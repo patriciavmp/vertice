@@ -333,41 +333,71 @@ function renderCatalog() {
 
     if (filtered.length === 0) {
         grid.innerHTML = `
-            <div class="col-span-1 md:col-span-2 xl:col-span-3 text-center py-20 bg-white rounded-3xl border border-dashed border-gray-200">
-                <i class="fa-solid fa-folder-open text-5xl mb-4 text-gray-300"></i>
-                <p class="text-gray-500 font-medium">No hay especialistas que coincidan con estos filtros.</p>
-                <button onclick="clearFilters()" class="mt-4 text-emerald-600 text-sm font-bold hover:underline inline-flex items-center gap-1.5">
+            <div class="col-span-1 md:col-span-2 xl:col-span-3 text-center py-20 bg-white rounded-2xl border border-dashed border-slate-200">
+                <div class="w-16 h-16 mx-auto bg-slate-50 text-slate-400 rounded-2xl flex items-center justify-center text-2xl mb-4 border border-slate-100">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <p class="text-slate-600 font-semibold text-base">No hay especialistas que coincidan con estos filtros.</p>
+                <p class="text-slate-400 text-xs mt-1">Intenta ajustando el rango de tarifa o seleccionando otras categorías.</p>
+                <button onclick="clearFilters()" class="mt-5 btn-press text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 transition-all">
                     <i class="fa-solid fa-rotate-left"></i> Restablecer filtros
                 </button>
             </div>`;
         return;
     }
 
-    filtered.forEach(srv => {
+    // Helper de estilo de insignia por categoría
+    function getCategoryStyle(cat) {
+        switch (cat) {
+            case 'Cursos y Tutorías':
+                return { icon: 'fa-graduation-cap', badge: 'bg-emerald-50/90 text-emerald-700 border-emerald-200/60' };
+            case 'Tareas y Entregables':
+                return { icon: 'fa-list-check', badge: 'bg-indigo-50/90 text-indigo-700 border-indigo-200/60' };
+            case 'Tesis y Redacción':
+                return { icon: 'fa-book-open-reader', badge: 'bg-amber-50/90 text-amber-800 border-amber-200/60' };
+            case 'Software y Diseño':
+                return { icon: 'fa-laptop-code', badge: 'bg-purple-50/90 text-purple-700 border-purple-200/60' };
+            default:
+                return { icon: 'fa-certificate', badge: 'bg-slate-50 text-slate-700 border-slate-200/60' };
+        }
+    }
+
+    filtered.forEach((srv, index) => {
+        const style = getCategoryStyle(srv.category);
         const card = document.createElement('div');
-        card.className = 'bg-white p-7 rounded-[2rem] border border-gray-100 shadow-soft hover:shadow-floating transition-all flex flex-col justify-between group';
+        card.className = 'interactive-card bg-white p-6 md:p-7 rounded-2xl border border-slate-200/80 shadow-soft hover:shadow-card-hover hover:border-emerald-500/40 flex flex-col justify-between group transition-all';
+        card.style.animationDelay = `${index * 40}ms`;
         card.innerHTML = `
             <div>
-                <div class="flex justify-between items-start mb-4">
-                    <span class="bg-gray-50 border border-gray-100 text-gray-600 text-[10px] font-extrabold px-3 py-1.5 rounded-lg uppercase tracking-widest">${srv.category}</span>
-                    <span class="flex items-center gap-1 text-sm font-black bg-yellow-50 px-2 py-0.5 rounded text-yellow-700">
-                        <i class="fa-solid fa-star text-yellow-500"></i> ${srv.rating}
+                <div class="flex justify-between items-center mb-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wide border ${style.badge}">
+                        <i class="fa-solid ${style.icon} text-[10px]"></i> ${srv.category}
+                    </span>
+                    <span class="inline-flex items-center gap-1 text-xs font-black bg-amber-50/90 border border-amber-200/60 text-amber-800 px-2.5 py-0.5 rounded-full shadow-xs">
+                        <i class="fa-solid fa-star text-amber-400 text-[10px]"></i> ${srv.rating}
                     </span>
                 </div>
-                <h4 class="font-extrabold text-xl text-gray-900 group-hover:text-emerald-700 transition-colors">${srv.title}</h4>
-                <p class="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">${srv.desc}</p>
-                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4 flex items-center gap-1.5">
-                    <i class="fa-solid fa-location-dot text-emerald-600"></i> ${srv.districts.join(', ')}
-                </p>
+                <h4 class="font-bold text-lg md:text-xl text-slate-900 group-hover:text-emerald-700 transition-colors tracking-tight">${srv.title}</h4>
+                <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed font-normal">${srv.desc}</p>
+                
+                <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="inline-flex items-center gap-1.5 font-medium">
+                        <i class="fa-solid fa-location-dot text-emerald-600 text-xs"></i> ${srv.districts.join(', ')}
+                    </span>
+                    <span class="inline-flex items-center gap-1 font-semibold text-emerald-700 bg-emerald-50/80 px-2 py-0.5 rounded-md text-[10px] uppercase tracking-wider border border-emerald-100">
+                        <i class="fa-solid fa-shield-check text-[10px]"></i> Verificado
+                    </span>
+                </div>
             </div>
-            <div class="mt-8 flex items-center justify-between pt-5 border-t border-gray-50">
+            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-0.5">Tarifa Base</span>
-                    <span class="font-black text-emerald-700 text-2xl">S/ ${srv.price}<span class="text-sm font-semibold text-gray-400">/h</span></span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tarifa Base</span>
+                    <span class="font-black text-slate-900 text-2xl tracking-tight">S/ ${srv.price}<span class="text-xs font-semibold text-slate-400">/h</span></span>
                 </div>
                 <button onclick="goToRequest('${srv.title}', '${srv.category}', ${srv.price}, '${selDistrict}')" 
-                    class="bg-gray-900 hover:bg-emerald-700 text-white text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5">
-                    Cotizar
+                    class="btn-press bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center gap-2 group-hover:gap-2.5 cursor-pointer">
+                    <span>Cotizar</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] transition-transform"></i>
                 </button>
             </div>
         `;
@@ -574,10 +604,10 @@ function sendUserChatMessage() {
 
     // Respuesta inteligente automática del bot conserje
     setTimeout(() => {
-        let reply = "Entendido, estoy coordinando los detalles con el especialista para asegurar el cumplimiento de los protocolos UPC.";
+        let reply = "Entendido, estoy coordinando los detalles con el tutor para asegurar el cumplimiento de tu entrega académica.";
         const lower = text.toLowerCase();
-        if (lower.includes('seguridad') || lower.includes('verificado')) {
-            reply = "Todos los especialistas cuentan con antecedentes penales y policiales verificados al 100% por el conserje VÉRTICE.";
+        if (lower.includes('seguridad') || lower.includes('verificado') || lower.includes('confianza')) {
+            reply = "Todos los tutores y especialistas son estudiantes de últimos ciclos o egresados UPC con récord académico destacado y verificación al 100%.";
         } else if (lower.includes('precio') || lower.includes('pago') || lower.includes('costo')) {
             reply = "La seña es de S/ 15.00 para congelar la tarifa preferencial y desbloquear datos de contacto directos.";
         } else if (lower.includes('gracias') || lower.includes('ok')) {
@@ -690,17 +720,21 @@ function renderAdmin() {
     tbody.innerHTML = '';
     DB_ADMIN_REQUESTS.forEach(req => {
         const row = document.createElement('tr');
-        row.className = 'hover:bg-gray-50 transition border-b border-gray-100';
+        row.className = 'hover:bg-slate-50/80 transition-colors border-b border-slate-100 text-sm';
         row.innerHTML = `
-            <td class="p-5 font-mono text-gray-500 font-bold">${req.id}</td>
-            <td class="p-5 font-semibold text-gray-900">${req.code}</td>
-            <td class="p-5">${req.service}</td>
-            <td class="p-5">
-                <span class="${req.statusClass} px-3 py-1 rounded text-xs font-bold inline-block">${req.status}</span>
+            <td class="p-4 font-mono text-slate-500 font-semibold text-xs">${req.id}</td>
+            <td class="p-4 font-bold text-slate-900">${req.code}</td>
+            <td class="p-4 text-slate-700 font-medium">${req.service}</td>
+            <td class="p-4">
+                <span class="${req.statusClass} px-2.5 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1 border">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                    ${req.status}
+                </span>
             </td>
-            <td class="p-5 text-right space-x-2">
-                <button onclick="navigate('view-chat')" class="text-emerald-600 hover:text-emerald-800 text-xs font-bold underline">
-                    Ver chat
+            <td class="p-4 text-right">
+                <button onclick="navigate('view-chat')" class="btn-press inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-xs"></i>
+                    <span>Ver chat</span>
                 </button>
             </td>
         `;

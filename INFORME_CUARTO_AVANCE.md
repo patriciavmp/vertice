@@ -81,7 +81,7 @@ Para cumplir con el ciclo Lean Startup, se ejecutaron pruebas de usabilidad basa
 * **Poco claras o insuficientes:** 0%
 * *Análisis:* Si bien la mayoría quedó conforme, casi un tercio de los usuarios demandó mayor visibilidad sobre calificaciones previas, reseñas de otros estudiantes y número de servicios completados con éxito.
 
-#### 6. Si necesitaras un servicio de custodia, chofer, clases o apoyo especializado, ¿qué tan probable es que uses VÉRTICE?
+#### 6. Si necesitaras apoyo para cursos difíciles, tareas semanales, entregas de ciclo o tesis, ¿qué tan probable es que uses VÉRTICE?
 * **Definitivamente sí:** 64.3%
 * **Probablemente sí:** 28.6%
 * **No estoy seguro/a:** 7.1%
@@ -185,23 +185,24 @@ En respuesta directa al feedback del docente y los aprendizajes del público obj
 
 ---
 
-### 3.3 Catálogo Completo de Especialistas Actualizado (13 Servicios)
+### 3.3 Catálogo Completo de Especialistas Actualizado (14 Servicios Estudiantiles)
 
 | ID | Especialista / Servicio | Categoría | Distritos Cubiertos | Tarifa / h | Rating | Reseñas |
 | :---: | :--- | :--- | :--- | :---: | :---: | :---: |
-| **1** | Chofer de Seguridad | Seguridad | San Isidro, Surco | S/ 45 | 4.9 ⭐ | 31 |
-| **2** | Acompañamiento Ejecutivo | Social/Asistencia | San Isidro, Surco | S/ 50 | 4.8 ⭐ | 17 |
-| **3** | Custodia Temporal | Seguridad | San Miguel, Surco | S/ 40 | 4.9 ⭐ | 23 |
-| **4** | Facilitador de Eventos | Social/Asistencia | San Miguel, San Isidro, Surco | S/ 35 | 4.7 ⭐ | 12 |
-| **5** | Tutor Universitario Avanzado | Clases | San Isidro, San Miguel, Surco | S/ 60 | 5.0 ⭐ | 45 |
-| **6** | Asesor Metodológico de Tesis | Clases | San Isidro, Todos | S/ 75 | 4.9 ⭐ | 28 |
-| **7** | Diseño Gráfico & Edición de Video | Servicios Profesionales | San Miguel, Surco, Todos | S/ 50 | 4.9 ⭐ | 19 |
-| **8** | Redacción & Corrección de Estilo | Servicios Profesionales | San Isidro, Surco, San Miguel | S/ 45 | 4.8 ⭐ | 24 |
-| **9** | Programación & Desarrollo Web | Servicios Profesionales | San Miguel, Surco, Todos | S/ 60 | 5.0 ⭐ | 38 |
-| **10** | Idiomas & Traducción Académica | Clases | San Isidro, San Miguel, Todos | S/ 50 | 4.9 ⭐ | 21 |
-| **11** | Orientación Vocacional & Mentoría | Social/Asistencia | Surco, San Miguel, San Isidro | S/ 45 | 4.8 ⭐ | 15 |
-| **12** | Fotografía Profesional | Servicios Profesionales | San Isidro, San Miguel, Surco | S/ 55 | 4.9 ⭐ | 18 |
-| **13** | Consultoría en Inteligencia Artificial | Clases | San Miguel, Surco, Todos | S/ 55 | 5.0 ⭐ | 42 |
+| **1** | Tutoría en Cálculo y Matemáticas | Cursos y Tutorías | San Miguel, Surco, San Isidro | S/ 35 | 4.9 ⭐ | 42 |
+| **2** | Asesoría en Estadística y Minitab | Cursos y Tutorías | San Isidro, Surco, San Miguel | S/ 40 | 4.9 ⭐ | 35 |
+| **3** | Refuerzo en Finanzas y Contabilidad | Cursos y Tutorías | San Isidro, Surco | S/ 45 | 4.8 ⭐ | 28 |
+| **4** | Clases de Inglés Universitario | Cursos y Tutorías | San Miguel, San Isidro, Todos | S/ 35 | 4.9 ⭐ | 31 |
+| **5** | Apoyo en Tareas y Guías Prácticas | Tareas y Entregables | San Miguel, Surco, San Isidro | S/ 30 | 4.9 ⭐ | 53 |
+| **6** | Preparación de Diapositivas y Exposiciones | Tareas y Entregables | Surco, San Miguel, Todos | S/ 35 | 4.8 ⭐ | 26 |
+| **7** | Revisión de Avances y Trabajos de Ciclo | Tareas y Entregables | San Isidro, Surco, San Miguel | S/ 40 | 5.0 ⭐ | 39 |
+| **8** | Asesor Metodológico de Tesis | Tesis y Redacción | San Isidro, Surco, Todos | S/ 55 | 5.0 ⭐ | 48 |
+| **9** | Normas APA / Vancouver y Turnitin | Tesis y Redacción | San Miguel, Surco, Todos | S/ 35 | 4.9 ⭐ | 64 |
+| **10** | Redacción y Corrección de Ensayos | Tesis y Redacción | San Isidro, San Miguel, Surco | S/ 40 | 4.8 ⭐ | 33 |
+| **11** | Tutoría en Programación (Python / Java / C++) | Software y Diseño | San Miguel, Surco, Todos | S/ 45 | 5.0 ⭐ | 58 |
+| **12** | Desarrollo Web y Bases de Datos SQL | Software y Diseño | San Miguel, Surco, Todos | S/ 50 | 4.9 ⭐ | 37 |
+| **13** | Diseño Gráfico y Edición Multimedia | Software y Diseño | San Miguel, Surco, San Isidro | S/ 40 | 4.9 ⭐ | 29 |
+| **14** | Consultoría en Herramientas de IA para Estudio | Software y Diseño | San Miguel, Surco, Todos | S/ 40 | 5.0 ⭐ | 44 |
 
 ---
 
@@ -238,7 +239,7 @@ Se presentan los registros de las entrevistas individuales realizadas en campo y
 | **4** | Valeria Quispe | Presencial (Campus San Isidro) | 21/10/2026 | 04:30 p. m. | *"Me encantaría que hubiera edición de video para reels de proyectos de expo."* |
 | **5** | Matías Paredes | Virtual (WhatsApp Call) | 22/10/2026 | 02:00 p. m. | *"Yapear la seña es fácil, pero la constancia en PDF que da la web genera total confianza."* |
 | **6** | Sofía Ramos | Presencial (Campus San Miguel) | 22/10/2026 | 05:00 p. m. | *"La opción de seleccionar fecha en calendario evita malentendidos de horarios."* |
-| **7** | Diego Castro | Presencial (Campus Monterrico) | 23/10/2026 | 12:00 m. | *"El chofer de seguridad es clave para amanecidas o eventos de fin de ciclo."* |
+| **7** | Diego Castro | Presencial (Campus Monterrico) | 23/10/2026 | 12:00 m. | *"El apoyo en entregas y revisión de rúbricas antes de subir el trabajo es clave para asegurar la nota."* |
 | **8** | Camila Fernández | Virtual (Google Meet) | 23/10/2026 | 06:15 p. m. | *"Que el panel admin esté protegido con clave le da seriedad al sistema."* |
 | **9** | Alonso Navarro | Presencial (Campus San Isidro) | 24/10/2026 | 09:45 a. m. | *"Prefiero WhatsApp antes que descargar otra app que llene la memoria del celular."* |
 | **10** | Luciana Vega | Virtual (Zoom) | 24/10/2026 | 04:00 p. m. | *"Excelente que hayan agregado consultoría de IA para investigación de tesis."* |

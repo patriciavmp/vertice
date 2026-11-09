@@ -4,7 +4,7 @@
 [![Status](https://img.shields.io/badge/Status-Prototipo%20Funcional%20Alta%20Fidelidad-emerald.svg)](#)
 [![UPC Exclusive](https://img.shields.io/badge/Ecosistema-Exclusivo%20UPC-red.svg)](#)
 
-Plataforma web de confianza y vinculación de servicios especializados (seguridad, acompañamiento y soporte académico) diseñada exclusivamente para la comunidad de la **Universidad Peruana de Ciencias Aplicadas (UPC)**.
+Plataforma web de confianza y vinculación de soporte universitario y servicios especializados (tutorías, resolución de tareas, entregas de proyectos, tesis y herramientas digitales) diseñada exclusivamente para la comunidad de la **Universidad Peruana de Ciencias Aplicadas (UPC)**.
 
 ---
 
@@ -15,7 +15,7 @@ Plataforma web de confianza y vinculación de servicios especializados (segurida
    - Acceso exclusivo al catálogo protegido.
 
 2. **Catálogo de Servicios y Filtros Reactivos:**
-   - Filtro multicategoría (Seguridad / Resguardo, Social / Asistencia, Clases Especializadas, Servicios Profesionales).
+   - Filtro multicategoría (Cursos y Tutorías, Tareas y Entregables, Tesis y Redacción, Software y Diseño).
    - Filtro por distritos clave de Lima y Campus UPC (San Isidro, Surco, San Miguel, etc.).
    - Rango dinámico de tarifas por hora con actualización instantánea.
 
